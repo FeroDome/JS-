@@ -77,6 +77,9 @@
 
 //}
 
+
+const shopContent = document.getElementById("shopContent")
+
 const productos = [
     {
         id: 1,
@@ -121,6 +124,14 @@ productos.array.forEach((product) => {
     <h3>${product.nombre}</h3>
     <p>${product.precio}</p>
     `;
+
+    shopContent.append(content)
+
+    let comprar = document.createElement("button")
+    comprar.innerText = "Llena el Carrito"
+
+    content.append(comprar)
+
 });
 
 
