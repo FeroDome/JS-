@@ -78,44 +78,15 @@
 //}
 
 
-const shopContent = document.getElementById("shopContent")
+const shopContent = document.getElementById("shopContent");
+const verCarrito = document.getElementById("verCarrito");
+const modalContainer = document.getElementById("modal-container");
+const cantidadCarrito = document.getElementById("cantidadCarrito");
 
-const productos = [
-    {
-        id: 1,
-        nombre: "Cerveza",
-        precio: 200,
-        img:
-            "https://media.ambito.com/p/f91439d1dece9caf73e785dbc7246749/adjuntos/239/imagenes/040/157/0040157125/cervezajpg.jpg",
 
-    },
 
-    {
-        id: 2,
-        nombre: "Mani",
-        precio: 50,
-        img:
-            "https://www.saborusa.com/do/wp-content/uploads/sites/8/2020/05/7-poderosas-razones-para-comer-mani-Foto-destacada.png",
 
-    },
-    {
-        id: 3,
-        nombre: "Fernet",
-        precio: 700,
-        img:
-            "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/064/758/products/fernet-branca4-811ab044600503c27f16060031316677-480-0.jpg",
-
-    },
-    {
-        id: 4,
-        nombre: "Coca-cola",
-        precio: 300,
-        img:
-            "https://imagenes.20minutos.es/files/image_990_v3/uploads/imagenes/2022/08/25/coca-cola.jpeg",
-    },
-];
-
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 productos.forEach((product) => {
     let content = document.createElement("div");
@@ -135,21 +106,44 @@ productos.forEach((product) => {
     content.append(comprar);
 
     comprar.addEventListener("click", () => {
+
+    const repeat = carrito.some((repeatProduct) => repeatProduct.id === product.id);
+    if (repeat){
+        carrito.map((prod)=> {
+            if(prod.id === product.id){
+                prod.cantidad++;
+            }
+        });
+    }else {
+
+    
         carrito.push({
             id: product.id,
             img: product.img,
             nombre: product.nombre,
             precio: product.precio,
-        })
+            cantidad: product.cantidad,
+        });
+    }
         console.log(carrito)
-    })
+        carritoCounter();
+        saveLocal();
+    });
     
-
+    
+    verCarrito.addEventListener("click", () => {
+        console.log("Tu Carrito")
+    });
+    
+    
+    
 });
+const saveLocal = () => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 
-verCarrito.addEventListener("click", () => {
-    console.log("Tu Carrito")
-})
+}
+
+
 
 
 
