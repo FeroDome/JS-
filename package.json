@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "luxon": "^3.2.1"
+  },
+  "name": "clase4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeroDome/JS-.git"
+  },
+  "author": "Dome Fernando",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FeroDome/JS-/issues"
+  },
+  "homepage": "https://github.com/FeroDome/JS-#readme",
+  "description": ""
+}
